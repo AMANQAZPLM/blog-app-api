@@ -9,12 +9,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-app.use(function (request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true); // can send our cookies
   next();
 });
 app.use(express.json());
