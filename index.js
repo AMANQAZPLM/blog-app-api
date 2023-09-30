@@ -5,13 +5,15 @@ import postRoutes from "./routes/posts.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: `http://localhost:${process.env.PORT_CLIENT}`,
   })
 );
 app.use(cookieParser());
@@ -36,6 +38,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 
-app.listen(8800, () => {
+app.listen(process.env.PORT_SERVER, () => {
   console.log("Connected!");
 });
