@@ -9,12 +9,15 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true); // can send our cookies
+  next();
+});
 app.use(express.json());
 app.use(
   cors({
-    // origin: `http://localhost:${process.env.PORT_CLIENT}`,
-    origin: "https://blog-app-client-5mzvwfppc-amanqazplm.vercel.app",
+    origin: `http://localhost:${process.env.PORT_CLIENT}`,
+    // origin: "https://blog-app-client-5mzvwfppc-amanqazplm.vercel.app",
   })
 );
 app.use(cookieParser());
