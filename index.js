@@ -16,8 +16,8 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(
   cors({
-    origin: `http://localhost:${process.env.PORT_CLIENT}`,
-    // origin: "https://blog-app-client-5mzvwfppc-amanqazplm.vercel.app",
+    // origin: `http://localhost:${process.env.PORT_CLIENT}`,
+    origin: "https://blog-app-client-5mzvwfppc-amanqazplm.vercel.app",
   })
 );
 app.use(cookieParser());
